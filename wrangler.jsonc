@@ -1,0 +1,20 @@
+{
+  // Cloudflare configuration: one Worker serves the built site (dist) and the AI help endpoint.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "analytics-practice-hub",
+  "main": "./worker/index.js",
+  "compatibility_date": "2026-11-14",
+  "assets": {
+    "directory": "./dist/",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Requests to /api/ go to the Worker; everything else is a static file.
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // The Gemini model used for AI help. The API key is NOT here: it is a secret
+    // named GEMINI_API_KEY, set in the Cloudflare dashboard (and in .dev.vars locally).
+    "GEMINI_MODEL": "gemini-3.5-flash"
+  },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,147 @@
+{
+ "permits": {
+  "name": "NYC film permits",
+  "part": "Excel part 1",
+  "schema": "Comma-delimited text file, columns A to N: EventID, EventType, StartDateTime, EndDateTime, EnteredOn, EventAgency, ParkingHeld, Borough, CommunityBoard(s), PolicePrecinct(s), Category, SubCategoryName, Country, ZipCode",
+  "files": [
+   {
+    "name": "NYC_Film_Permits.txt",
+    "bytes": 11120891
+   }
+  ]
+ },
+ "etl1": {
+  "name": "Balance sheet extract",
+  "part": "Excel part 2",
+  "schema": "Comma-separated file, columns: Ticker, Name, Year, Cash, Accounts Receivables, Inventories, Total Current Assets, Total Depreciation",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_ETL_Case1.csv",
+    "bytes": 1779
+   }
+  ]
+ },
+ "etl2": {
+  "name": "Employee codes (clean)",
+  "part": "Excel part 2",
+  "schema": "Excel sheet 'Case 2', columns: EmployeeCode (for example USA1218-17M), FirstName, LastName",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_ETL_Case2_Excel.xlsx",
+    "bytes": 48502
+   }
+  ]
+ },
+ "etl3": {
+  "name": "Employee codes (messy)",
+  "part": "Excel part 2",
+  "schema": "Excel sheet 'Case 3 data', columns: EmployeeCode (for example Japan177-3Mo), FirstName, LastName",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_ETL_Case3_Excel.xlsx",
+    "bytes": 48326
+   }
+  ]
+ },
+ "etl4": {
+  "name": "Journal entries",
+  "part": "Excel part 2",
+  "schema": "Excel workbook. JELineItems(JENumber, GLAccountNumber, BusinessUnitID, PreparerID, SourceID, EffectiveDate, JEDescription, Debit, Credit, Amount); BusinessUnits(BusinessUnitID, BusinessUnit, BUDescription); ChartOfAccounts(GLAccountName, GLAccountNumber, AccountType, AccountClass); PreparerInfo(PreparerName, PreparerID, BusinessUnitID); Source(SourceID, Source)",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_ETL_Case4_Excel.xlsx",
+    "bytes": 114035
+   }
+  ]
+ },
+ "pay15": {
+  "name": "2015 payroll",
+  "part": "Excel part 3",
+  "schema": "Pipe-delimited files. 2015 payroll, columns A to P: Pay_Date, Payroll_ID, Emp_No, Home_Div, Work_Div, First_Name, Last_Name, Job, Reg_Hrs, OT_Hrs, Reg_Pay, OT_Pay, Futa, Suta, Fica_Medc, Work_Comp. 2016 payroll, columns A to K: Project, Employee_ID, Employee_Number, Employee_Name, Hours, OT_Hours, Gross_Wages, SocSec_Medicare, FUTA, SUTA, Work_Comp. Job codes: Job_Code, Job_Description. Locations: Employee_Name, Location.",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_2015payroll.csv",
+    "bytes": 378963
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_2016payroll.csv",
+    "bytes": 49152
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_jobcodes.csv",
+    "bytes": 283
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_locations.csv",
+    "bytes": 1706
+   }
+  ]
+ },
+ "pay16": {
+  "name": "2016 payroll",
+  "part": "Excel part 3",
+  "schema": "Pipe-delimited files. 2015 payroll, columns A to P: Pay_Date, Payroll_ID, Emp_No, Home_Div, Work_Div, First_Name, Last_Name, Job, Reg_Hrs, OT_Hrs, Reg_Pay, OT_Pay, Futa, Suta, Fica_Medc, Work_Comp. 2016 payroll, columns A to K: Project, Employee_ID, Employee_Number, Employee_Name, Hours, OT_Hours, Gross_Wages, SocSec_Medicare, FUTA, SUTA, Work_Comp. Job codes: Job_Code, Job_Description. Locations: Employee_Name, Location.",
+  "files": [
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_2015payroll.csv",
+    "bytes": 378963
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_2016payroll.csv",
+    "bytes": 49152
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_jobcodes.csv",
+    "bytes": 283
+   },
+   {
+    "name": "Analytics_mindset_case_studies_IntegrateCo_locations.csv",
+    "bytes": 1706
+   }
+  ]
+ },
+ "songs": {
+  "name": "Songs",
+  "part": "SQL part 1",
+  "schema": "SQLite tables: songs(id, name, artist_id, danceability, energy, key, loudness, speechiness, valence, tempo, duration_ms); artists(id, name)",
+  "files": [
+   {
+    "name": "songs.db",
+    "bytes": 24576
+   }
+  ]
+ },
+ "movies": {
+  "name": "Movies",
+  "part": "SQL part 1",
+  "schema": "SQLite tables: movies(id, title, year); stars(movie_id, person_id); directors(movie_id, person_id); ratings(movie_id, rating, votes); people(id, name, birth)",
+  "files": [
+   {
+    "name": "movies.db",
+    "bytes": 68939776
+   }
+  ]
+ },
+ "chinook": {
+  "name": "Chinook",
+  "part": "SQL part 1",
+  "schema": "SQLite tables: Album(AlbumId, Title, ArtistId); Artist(ArtistId, Name); Customer(CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId); Employee(EmployeeId, LastName, FirstName, Title, ReportsTo, BirthDate, HireDate, Address, City, State, Country, PostalCode, Phone, Fax, Email); Genre(GenreId, Name); Invoice(InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, Total); InvoiceLine(InvoiceLineId, InvoiceId, TrackId, UnitPrice, Quantity); MediaType(MediaTypeId, Name); Playlist(PlaylistId, Name); PlaylistTrack(PlaylistId, TrackId); Track(TrackId, Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)",
+  "files": [
+   {
+    "name": "Chinook_Sqlite.sqlite",
+    "bytes": 1067008
+   }
+  ]
+ },
+ "pcards": {
+  "name": "Purchasing cards",
+  "part": "SQL part 2",
+  "schema": "SQLite tables: pcards(Year, Month, FullName, ID, AgencyNumber, AgencyName, CardholderLastName, CardholderFirstInitial, Description, Amount, Vendor, TransactionDate, PostedDate, MCC)",
+  "files": [
+   {
+    "name": "pcards.db",
+    "bytes": 94003200
+   }
+  ]
+ }
+}

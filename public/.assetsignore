@@ -1,0 +1,4 @@
+# Files in dist that must not be uploaded to Cloudflare (over the 25 MB limit per file).
+# They are served from a GitHub release instead; see src/config.js.
+datasets/movies.db
+datasets/pcards.db

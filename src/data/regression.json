@@ -1,0 +1,838 @@
+[
+ {
+  "id": "REG-01",
+  "title": "Does temperature move sales?",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Maximum temperature]",
+  "variables": [
+   {
+    "name": "Maximum temperature",
+    "unit": "degrees Fahrenheit",
+    "range": "39 to 100"
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 2710.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Maximum temperature",
+    "estimate": 7.81,
+    "p": "0.006"
+   }
+  ],
+  "r2": 0.024,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day with maximum temperature of 66 degrees Fahrenheit.",
+    "answer": "About 3,225 dollars. Working: 2,710 + (7.81 x 66) = 3,225.46.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-01-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Maximum temperature.",
+    "answer": "Each additional degree Fahrenheit of maximum temperature is associated with an increase of 7.81 dollars in daily net sales.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-01-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Maximum temperature statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.006, maximum temperature is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-01-3"
+   },
+   {
+    "skill": "reg-fit",
+    "text": "The model's R-squared is 0.024 with 309 daily observations. How confident should Bob be in predictions from this model?",
+    "answer": "The model explains 2.4% of the day-to-day variation in daily net sales, leaving 97.6% unexplained. Predictions will often miss by a wide margin, so Bob should treat them as a rough guide.",
+    "say": "Translate R-squared into 'share of variation explained', then give a practical judgement about ordering ingredients and scheduling staff.",
+    "id": "REG-01-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-02",
+  "title": "Game days and sales",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Game day]",
+  "variables": [
+   {
+    "name": "Game day",
+    "unit": "1 = football game that day, 0 = no game",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 3190.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Game day",
+    "estimate": 1440.0,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.075,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a game day.",
+    "answer": "About 4,630 dollars. Working: 3,190 + (1,440 x 1) = 4,630.00.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-02-1"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Game day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, game day is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-02-2"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Game day. What is the comparison group?",
+    "answer": "Predicted daily net sales on a game day is 1,440 dollars higher than on a day without a game, which is the comparison group.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-02-3"
+   },
+   {
+    "skill": "reg-fit",
+    "text": "The model's R-squared is 0.075 with 309 daily observations. What does that tell Bob about relying on it?",
+    "answer": "The model explains 7.5% of the variation in daily net sales; the remaining 92.5% comes from factors not in the model. On its own it is a weak basis for decisions.",
+    "say": "Translate R-squared into plain language and link it to Bob's decisions about ingredients and shifts.",
+    "id": "REG-02-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-03",
+  "title": "Last year's sales and game days",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Sales 364 days ago] + b2[Game day] + b3[Sales 364 days ago x Game day]",
+  "variables": [
+   {
+    "name": "Sales 364 days ago",
+    "unit": "dollars",
+    "range": "2,001 to 5,517"
+   },
+   {
+    "name": "Game day",
+    "unit": "1 = football game that day, 0 = no game",
+    "range": null
+   },
+   {
+    "name": "Sales 364 days ago x Game day",
+    "unit": "interaction",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 1050.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Sales 364 days ago",
+    "estimate": 0.619,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Game day",
+    "estimate": 385.0,
+    "p": "0.638"
+   },
+   {
+    "term": "Sales 364 days ago x Game day",
+    "estimate": 0.0113,
+    "p": "0.943"
+   }
+  ],
+  "r2": 0.532,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a game day with sales 364 days ago of 3,258 dollars.",
+    "answer": "About 3,489 dollars. Working: 1,050 + (0.619 x 3,258) + (385 x 1) + (0.0113 x 3,258) = 3,488.52.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-03-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Sales 364 days ago.",
+    "answer": "Each additional dollar of sales 364 days ago is associated with an increase of 0.619 dollars in daily net sales on a day without a game (the interaction term changes this slope on a game day).",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-03-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Sales 364 days ago x Game day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.943, sales 364 days ago x game day is not statistically significant at the 5% level: the p-value is above 0.05, so the data cannot distinguish this effect from zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-03-3"
+   },
+   {
+    "skill": "reg-interaction",
+    "text": "How does a game day change the relationship between sales 364 days ago and daily net sales?",
+    "answer": "On a day without a game, each additional dollar of sales 364 days ago is associated with a change of 0.619 dollars. On a game day the slope becomes 0.619 + (0.0113) = 0.6303, and the starting level shifts by 385 dollars. The interaction's p-value is 0.943, so the difference in slopes is not statistically significant at the 5% level.",
+    "say": "Explain that the interaction coefficient changes the slope, while the dummy coefficient changes the starting level. Check the interaction's p-value before leaning on it.",
+    "id": "REG-03-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-04",
+  "title": "Forecasting from past sales",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Sales 364 days ago] + b2[Sales 28 days ago]",
+  "variables": [
+   {
+    "name": "Sales 364 days ago",
+    "unit": "dollars",
+    "range": "2,001 to 5,517"
+   },
+   {
+    "name": "Sales 28 days ago",
+    "unit": "dollars",
+    "range": "1,937 to 5,223"
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 629.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Sales 364 days ago",
+    "estimate": 0.491,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Sales 28 days ago",
+    "estimate": 0.271,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.581,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day with sales 364 days ago of 3,258 dollars and sales 28 days ago of 3,102 dollars.",
+    "answer": "About 3,069 dollars. Working: 629 + (0.491 x 3,258) + (0.271 x 3,102) = 3,069.32.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-04-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Sales 364 days ago.",
+    "answer": "Each additional dollar of sales 364 days ago is associated with an increase of 0.491 dollars in daily net sales holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-04-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Sales 28 days ago statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, sales 28 days ago is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-04-3"
+   },
+   {
+    "skill": "reg-fit",
+    "text": "The model's R-squared is 0.581 with 309 daily observations. How confident should Bob be in predictions from this model?",
+    "answer": "The model explains 58.1% of the day-to-day variation in daily net sales, leaving 41.9% unexplained. That is a reasonable basis for planning, with a margin for error.",
+    "say": "Translate R-squared into 'share of variation explained', then give a practical judgement about ordering ingredients and scheduling staff.",
+    "id": "REG-04-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-05",
+  "title": "Weather and game days together",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Maximum temperature] + b2[Precipitation] + b3[Game day]",
+  "variables": [
+   {
+    "name": "Maximum temperature",
+    "unit": "degrees Fahrenheit",
+    "range": "39 to 100"
+   },
+   {
+    "name": "Precipitation",
+    "unit": "inches",
+    "range": "0 to 3"
+   },
+   {
+    "name": "Game day",
+    "unit": "1 = football game that day, 0 = no game",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 2640.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Maximum temperature",
+    "estimate": 7.87,
+    "p": "0.005"
+   },
+   {
+    "term": "Precipitation",
+    "estimate": 33.3,
+    "p": "0.466"
+   },
+   {
+    "term": "Game day",
+    "estimate": 1400.0,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.099,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a game day with maximum temperature of 66 degrees Fahrenheit and precipitation of 0 inches.",
+    "answer": "About 4,559 dollars. Working: 2,640 + (7.87 x 66) + (33.3 x 0) + (1,400 x 1) = 4,559.42.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-05-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Maximum temperature.",
+    "answer": "Each additional degree Fahrenheit of maximum temperature is associated with an increase of 7.87 dollars in daily net sales holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-05-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Game day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, game day is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-05-3"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Game day. What is the comparison group?",
+    "answer": "Predicted daily net sales on a game day is 1,400 dollars higher than on a day without a game, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-05-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-06",
+  "title": "Weekends and temperature",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Weekend] + b2[Maximum temperature]",
+  "variables": [
+   {
+    "name": "Weekend",
+    "unit": "1 = Saturday or Sunday, 0 = weekday",
+    "range": null
+   },
+   {
+    "name": "Maximum temperature",
+    "unit": "degrees Fahrenheit",
+    "range": "39 to 100"
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 2560.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Weekend",
+    "estimate": 1010.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Maximum temperature",
+    "estimate": 7.5,
+    "p": "0.005"
+   }
+  ],
+  "r2": 0.154,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a weekend day with maximum temperature of 66 degrees Fahrenheit.",
+    "answer": "About 4,065 dollars. Working: 2,560 + (1,010 x 1) + (7.5 x 66) = 4,065.00.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-06-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Maximum temperature.",
+    "answer": "Each additional degree Fahrenheit of maximum temperature is associated with an increase of 7.5 dollars in daily net sales holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-06-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Weekend statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, weekend is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-06-3"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Weekend. What is the comparison group?",
+    "answer": "Predicted daily net sales on a weekend day is 1,010 dollars higher than on a weekday, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-06-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-07",
+  "title": "Home games and last year's sales",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Sales 364 days ago] + b2[Home game]",
+  "variables": [
+   {
+    "name": "Sales 364 days ago",
+    "unit": "dollars",
+    "range": "2,001 to 5,517"
+   },
+   {
+    "name": "Home game",
+    "unit": "1 = home game that day, 0 = otherwise",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 1090.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Sales 364 days ago",
+    "estimate": 0.605,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Home game",
+    "estimate": 1100.0,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.545,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a home game day with sales 364 days ago of 3,258 dollars.",
+    "answer": "About 4,161 dollars. Working: 1,090 + (0.605 x 3,258) + (1,100 x 1) = 4,161.09.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-07-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Sales 364 days ago.",
+    "answer": "Each additional dollar of sales 364 days ago is associated with an increase of 0.605 dollars in daily net sales holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-07-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Home game statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, home game is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-07-3"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Home game. What is the comparison group?",
+    "answer": "Predicted daily net sales on a home game day is 1,100 dollars higher than on any other day, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-07-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-08",
+  "title": "Items sold, temperature and game days",
+  "minutes": 5,
+  "dependent": "Daily items sold (items)",
+  "equation": "Predicted daily items sold = b0 + b1[Maximum temperature] + b2[Game day]",
+  "variables": [
+   {
+    "name": "Maximum temperature",
+    "unit": "degrees Fahrenheit",
+    "range": "39 to 100"
+   },
+   {
+    "name": "Game day",
+    "unit": "1 = football game that day, 0 = no game",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 326.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Maximum temperature",
+    "estimate": 0.977,
+    "p": "0.003"
+   },
+   {
+    "term": "Game day",
+    "estimate": 153.0,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.09,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily items sold for a day that is a game day with maximum temperature of 66 degrees Fahrenheit.",
+    "answer": "About 543 items. Working: 326 + (0.977 x 66) + (153 x 1) = 543.48.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-08-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Maximum temperature.",
+    "answer": "Each additional degree Fahrenheit of maximum temperature is associated with an increase of 0.977 items in daily items sold holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-08-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Game day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value below 0.001, game day is statistically significant at the 5% level: the p-value is below 0.05, so an effect this large would be unlikely if the true effect were zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-08-3"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Game day. What is the comparison group?",
+    "answer": "Predicted daily items sold on a game day is 153 items higher than on a day without a game, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-08-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-09",
+  "title": "Rainy days and weekends",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Rainy day] + b2[Weekend]",
+  "variables": [
+   {
+    "name": "Rainy day",
+    "unit": "1 = any precipitation, 0 = dry",
+    "range": null
+   },
+   {
+    "name": "Weekend",
+    "unit": "1 = Saturday or Sunday, 0 = weekday",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 3100.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Rainy day",
+    "estimate": -109.0,
+    "p": "0.446"
+   },
+   {
+    "term": "Weekend",
+    "estimate": 1010.0,
+    "p": "< 0.001"
+   }
+  ],
+  "r2": 0.134,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a rainy day and a weekend day.",
+    "answer": "About 4,001 dollars. Working: 3,100 + (-109 x 1) + (1,010 x 1) = 4,001.00.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-09-1"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Rainy day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.446, rainy day is not statistically significant at the 5% level: the p-value is above 0.05, so the data cannot distinguish this effect from zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-09-2"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Rainy day. What is the comparison group?",
+    "answer": "Predicted daily net sales on a rainy day is 109 dollars lower than on a dry day, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-09-3"
+   },
+   {
+    "skill": "reg-fit",
+    "text": "The model's R-squared is 0.134 with 309 daily observations. What does that tell Bob about relying on it?",
+    "answer": "The model explains 13.4% of the variation in daily net sales; the remaining 86.6% comes from factors not in the model. On its own it is a weak basis for decisions.",
+    "say": "Translate R-squared into plain language and link it to Bob's decisions about ingredients and shifts.",
+    "id": "REG-09-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-10",
+  "title": "Items sold from last year's volume",
+  "minutes": 5,
+  "dependent": "Daily items sold (items)",
+  "equation": "Predicted daily items sold = b0 + b1[Items sold 364 days ago] + b2[Weekend]",
+  "variables": [
+   {
+    "name": "Items sold 364 days ago",
+    "unit": "items",
+    "range": "259 to 650"
+   },
+   {
+    "name": "Weekend",
+    "unit": "1 = Saturday or Sunday, 0 = weekday",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 112.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Items sold 364 days ago",
+    "estimate": 0.659,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Weekend",
+    "estimate": 8.28,
+    "p": "0.544"
+   }
+  ],
+  "r2": 0.566,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily items sold for a day that is a weekend day with items sold 364 days ago of 412 items.",
+    "answer": "About 392 items. Working: 112 + (0.659 x 412) + (8.28 x 1) = 391.79.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-10-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Items sold 364 days ago.",
+    "answer": "Each additional item sold 364 days ago is associated with an increase of 0.659 items in daily items sold holding the other variables constant.",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-10-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Weekend statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.544, weekend is not statistically significant at the 5% level: the p-value is above 0.05, so the data cannot distinguish this effect from zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-10-3"
+   },
+   {
+    "skill": "reg-dummy",
+    "text": "Interpret the coefficient on Weekend. What is the comparison group?",
+    "answer": "Predicted daily items sold on a weekend day is 8.28 items higher than on a weekday, which is the comparison group, holding the other variables constant.",
+    "say": "Name the reference group (the 0 category) and express the coefficient as a difference between the two groups, not as a slope.",
+    "id": "REG-10-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-11",
+  "title": "Do weekends change how last year predicts this year?",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Sales 364 days ago] + b2[Weekend] + b3[Sales 364 days ago x Weekend]",
+  "variables": [
+   {
+    "name": "Sales 364 days ago",
+    "unit": "dollars",
+    "range": "2,001 to 5,517"
+   },
+   {
+    "name": "Weekend",
+    "unit": "1 = Saturday or Sunday, 0 = weekday",
+    "range": null
+   },
+   {
+    "name": "Sales 364 days ago x Weekend",
+    "unit": "interaction",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 1120.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Sales 364 days ago",
+    "estimate": 0.596,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Weekend",
+    "estimate": -261.0,
+    "p": "0.530"
+   },
+   {
+    "term": "Sales 364 days ago x Weekend",
+    "estimate": 0.0959,
+    "p": "0.294"
+   }
+  ],
+  "r2": 0.53,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a weekend day with sales 364 days ago of 3,258 dollars.",
+    "answer": "About 3,113 dollars. Working: 1,120 + (0.596 x 3,258) + (-261 x 1) + (0.0959 x 3,258) = 3,113.21.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-11-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Sales 364 days ago.",
+    "answer": "Each additional dollar of sales 364 days ago is associated with an increase of 0.596 dollars in daily net sales on a weekday (the interaction term changes this slope on a weekend day).",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-11-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Sales 364 days ago x Weekend statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.294, sales 364 days ago x weekend is not statistically significant at the 5% level: the p-value is above 0.05, so the data cannot distinguish this effect from zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-11-3"
+   },
+   {
+    "skill": "reg-interaction",
+    "text": "How does a weekend day change the relationship between sales 364 days ago and daily net sales?",
+    "answer": "On a weekday, each additional dollar of sales 364 days ago is associated with a change of 0.596 dollars. On a weekend day the slope becomes 0.596 + (0.0959) = 0.6919, and the starting level shifts by -261 dollars. The interaction's p-value is 0.294, so the difference in slopes is not statistically significant at the 5% level.",
+    "say": "Explain that the interaction coefficient changes the slope, while the dummy coefficient changes the starting level. Check the interaction's p-value before leaning on it.",
+    "id": "REG-11-4"
+   }
+  ]
+ },
+ {
+  "id": "REG-12",
+  "title": "Does temperature matter more on game days?",
+  "minutes": 5,
+  "dependent": "Daily net sales (dollars)",
+  "equation": "Predicted daily net sales = b0 + b1[Maximum temperature] + b2[Game day] + b3[Maximum temperature x Game day]",
+  "variables": [
+   {
+    "name": "Maximum temperature",
+    "unit": "degrees Fahrenheit",
+    "range": "39 to 100"
+   },
+   {
+    "name": "Game day",
+    "unit": "1 = football game that day, 0 = no game",
+    "range": null
+   },
+   {
+    "name": "Maximum temperature x Game day",
+    "unit": "interaction",
+    "range": null
+   }
+  ],
+  "output": [
+   {
+    "term": "Intercept",
+    "estimate": 2700.0,
+    "p": "< 0.001"
+   },
+   {
+    "term": "Maximum temperature",
+    "estimate": 7.13,
+    "p": "0.011"
+   },
+   {
+    "term": "Game day",
+    "estimate": 448.0,
+    "p": "0.717"
+   },
+   {
+    "term": "Maximum temperature x Game day",
+    "estimate": 13.6,
+    "p": "0.420"
+   }
+  ],
+  "r2": 0.099,
+  "n": 309,
+  "questions": [
+   {
+    "skill": "reg-predict",
+    "text": "Predict daily net sales for a day that is a game day with maximum temperature of 66 degrees Fahrenheit.",
+    "answer": "About 4,516 dollars. Working: 2,700 + (7.13 x 66) + (448 x 1) + (13.6 x 66) = 4,516.18.",
+    "say": "State the equation, substitute each value, and give the unit. Mention that the prediction is only as good as the model's fit.",
+    "id": "REG-12-1"
+   },
+   {
+    "skill": "reg-coef",
+    "text": "Interpret the coefficient on Maximum temperature.",
+    "answer": "Each additional degree Fahrenheit of maximum temperature is associated with an increase of 7.13 dollars in daily net sales on a day without a game (the interaction term changes this slope on a game day).",
+    "say": "Give direction, size and unit, and say 'associated with' rather than 'causes'.",
+    "id": "REG-12-2"
+   },
+   {
+    "skill": "reg-signif",
+    "text": "Is the effect of Maximum temperature x Game day statistically significant at the 5% level? Explain to Bob what that means.",
+    "answer": "With a p-value of 0.420, maximum temperature x game day is not statistically significant at the 5% level: the p-value is above 0.05, so the data cannot distinguish this effect from zero.",
+    "say": "Compare the p-value with 0.05, then translate it into plain language for a restaurant owner. Not significant does not prove there is no effect.",
+    "id": "REG-12-3"
+   },
+   {
+    "skill": "reg-interaction",
+    "text": "How does a game day change the relationship between maximum temperature and daily net sales?",
+    "answer": "On a day without a game, each additional degree Fahrenheit of maximum temperature is associated with a change of 7.13 dollars. On a game day the slope becomes 7.13 + (13.6) = 20.73, and the starting level shifts by 448 dollars. The interaction's p-value is 0.420, so the difference in slopes is not statistically significant at the 5% level.",
+    "say": "Explain that the interaction coefficient changes the slope, while the dummy coefficient changes the starting level. Check the interaction's p-value before leaning on it.",
+    "id": "REG-12-4"
+   }
+  ]
+ }
+]

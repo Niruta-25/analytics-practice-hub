@@ -1,0 +1,140 @@
+[
+ {
+  "id": "xl-import",
+  "subject": "Excel",
+  "name": "Import and delimiters",
+  "description": "Bring a text file into Excel correctly: delimiter, text qualifier, data types and regional date/number settings."
+ },
+ {
+  "id": "xl-clean",
+  "subject": "Excel",
+  "name": "Spot and fix data problems",
+  "description": "Find missing, invalid, duplicated or inconsistently formatted values and make them analysable."
+ },
+ {
+  "id": "xl-filter-sort",
+  "subject": "Excel",
+  "name": "Filter and sort",
+  "description": "Narrow a table to the rows that matter and order them."
+ },
+ {
+  "id": "xl-count",
+  "subject": "Excel",
+  "name": "Conditional counting",
+  "description": "Count rows that meet one or more conditions (COUNTIFS, distinct counts)."
+ },
+ {
+  "id": "xl-aggregate",
+  "subject": "Excel",
+  "name": "Conditional totals and averages",
+  "description": "Sum or average a column for a subset of rows (SUMIFS, AVERAGEIFS)."
+ },
+ {
+  "id": "xl-pivot",
+  "subject": "Excel",
+  "name": "Summarise with a PivotTable",
+  "description": "Group by one or two fields and rank the groups."
+ },
+ {
+  "id": "xl-dates",
+  "subject": "Excel",
+  "name": "Date arithmetic",
+  "description": "Work with dates and times: durations, lead times, year and month parts."
+ },
+ {
+  "id": "xl-text",
+  "subject": "Excel",
+  "name": "Extract text from codes",
+  "description": "Pull fields out of a combined code with LEFT, MID, RIGHT, FIND or Flash Fill."
+ },
+ {
+  "id": "xl-lookup",
+  "subject": "Excel",
+  "name": "Join tables with lookups",
+  "description": "Bring fields from one table into another with XLOOKUP/VLOOKUP, including composite keys."
+ },
+ {
+  "id": "sql-select",
+  "subject": "SQL",
+  "name": "SELECT with WHERE",
+  "description": "Return chosen columns for rows that meet a condition."
+ },
+ {
+  "id": "sql-sort-limit",
+  "subject": "SQL",
+  "name": "ORDER BY and LIMIT",
+  "description": "Sort results and keep the top rows."
+ },
+ {
+  "id": "sql-aggregate",
+  "subject": "SQL",
+  "name": "Aggregate functions",
+  "description": "COUNT, SUM, AVG, MIN and MAX over a set of rows."
+ },
+ {
+  "id": "sql-like",
+  "subject": "SQL",
+  "name": "Pattern matching",
+  "description": "Match text with LIKE and wildcards, or lists with IN."
+ },
+ {
+  "id": "sql-groupby",
+  "subject": "SQL",
+  "name": "GROUP BY and HAVING",
+  "description": "Aggregate per group and filter the groups."
+ },
+ {
+  "id": "sql-join",
+  "subject": "SQL",
+  "name": "JOIN tables",
+  "description": "Combine related tables on their keys."
+ },
+ {
+  "id": "sql-subquery",
+  "subject": "SQL",
+  "name": "Subqueries",
+  "description": "Use the result of one query inside another."
+ },
+ {
+  "id": "sql-calc",
+  "subject": "SQL",
+  "name": "Calculated columns",
+  "description": "Derive new columns with arithmetic, CASE, text and date functions."
+ },
+ {
+  "id": "reg-predict",
+  "subject": "Regression",
+  "name": "Make a prediction",
+  "description": "Plug values into the fitted equation."
+ },
+ {
+  "id": "reg-coef",
+  "subject": "Regression",
+  "name": "Interpret a coefficient",
+  "description": "Say what a one-unit change means, holding the rest constant."
+ },
+ {
+  "id": "reg-signif",
+  "subject": "Regression",
+  "name": "Judge significance",
+  "description": "Use the p-value to say whether an effect is distinguishable from zero."
+ },
+ {
+  "id": "reg-dummy",
+  "subject": "Regression",
+  "name": "Interpret a 0/1 variable",
+  "description": "Read a dummy coefficient as a difference between two groups."
+ },
+ {
+  "id": "reg-interaction",
+  "subject": "Regression",
+  "name": "Interpret an interaction",
+  "description": "Explain how one variable changes the effect of another."
+ },
+ {
+  "id": "reg-fit",
+  "subject": "Regression",
+  "name": "Judge model fit",
+  "description": "Use R-squared and sample size to say how far to trust the model."
+ }
+]

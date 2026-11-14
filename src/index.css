@@ -1,0 +1,31 @@
+:root {
+  --ink: #193f30;
+  --ink-soft: #5c6f65;
+  --green: #245740;
+  --green-mid: #39805f;
+  --tint: #edf4ef;
+  --tint-strong: #dfe8e1;
+  --paper: #ffffff;
+  --warn: #9a5b00;
+  --warn-tint: #fff4dc;
+  --stop: #a3261c;
+  --stop-tint: #fde9e6;
+  font: 17px/1.55 system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
