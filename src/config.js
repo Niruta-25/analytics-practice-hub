@@ -6,7 +6,7 @@
 // a slash, for example:
 //   https://github.com/<user>/<repository>/releases/download/datasets/
 // Leave it empty to serve them from public/datasets, as when running locally.
-export const LARGE_FILES_URL = '';
+export const LARGE_FILES_URL = 'https://github.com/Niruta-25/analytics-practice-hub/releases/download/datasets/';
 
 // Files above this size are fetched from LARGE_FILES_URL when it is set.
 export const LARGE_FILE_BYTES = 25 * 1024 * 1024;
